@@ -3,7 +3,7 @@ import logging
 
 from homeassistant.core import callback
 from homeassistant.helpers.dispatcher import async_dispatcher_connect
-from homeassistant.components.binary_sensor import BinarySensorDevice, DEVICE_CLASS_OPENING
+from homeassistant.components.binary_sensor import BinarySensorEntity, BinarySensorDeviceClass
 
 #from .ems_units import UnitOnOff, UnitYesNo, UnitOpenClosed
 from .entity import EmsBusEntity
@@ -23,7 +23,7 @@ async def async_setup_platform(hass, config_entry, async_add_entities, discovery
     async_dispatcher_connect(hass, f'{DOMAIN}_new_binary_sensor', async_add_binary_sensor)
 
 
-class EmsBusBinarySensor(EmsBusEntity, BinarySensorDevice):
+class EmsBusBinarySensor(EmsBusEntity, BinarySensorEntity):
     '''EMS bus binary sensor devices'''
 
     @property
@@ -33,4 +33,4 @@ class EmsBusBinarySensor(EmsBusEntity, BinarySensorDevice):
     @property
     def device_class(self):
         """Return the class of this device, from component DEVICE_CLASSES."""
-        return(DEVICE_CLASS_OPENING)
+        return(BinarySensorDeviceClass.OPENING)
