@@ -2,7 +2,7 @@
 
 import logging
 
-from homeassistant.components.switch import SwitchDevice
+from homeassistant.components.switch import SwitchEntity
 from homeassistant.core import callback
 from homeassistant.helpers.dispatcher import async_dispatcher_connect
 
@@ -24,7 +24,7 @@ async def async_setup_platform(hass, config_entry, async_add_entities, discovery
     async_dispatcher_connect(hass, f'{DOMAIN}_new_switch', async_add_switch)
 
 
-class EmsBusSwitch(EmsBusEntity, SwitchDevice):
+class EmsBusSwitch(EmsBusEntity, SwitchEntity):
     '''Representation of a EMS bus switch property'''
 
     # Todo: make async
