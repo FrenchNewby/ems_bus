@@ -4,8 +4,9 @@ import logging
 
 from homeassistant.components.input_number import \
     InputNumber, CONF_INITIAL, CONF_ID, CONF_MIN, CONF_MAX, CONF_NAME, CONF_ICON, CONF_STEP, \
-    ATTR_UNIT_OF_MEASUREMENT, CONF_MODE, MODE_SLIDER
+    CONF_MODE, MODE_SLIDER
 from homeassistant.core import callback
+from homeassistant.const import ATTR_UNIT_OF_MEASUREMENT
 from homeassistant.helpers.dispatcher import async_dispatcher_connect
 
 from .const import DOMAIN
