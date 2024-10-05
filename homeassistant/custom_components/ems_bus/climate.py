@@ -2,9 +2,9 @@
 
 import logging
 
-from homeassistant.components.climate import ClimateDevice, SUPPORT_TARGET_TEMPERATURE, \
-                                             TEMP_CELSIUS, HVAC_MODE_OFF
-from homeassistant.const import ATTR_TEMPERATURE
+from homeassistant.components.climate import ClimateEntity, ClimateEntityFeature, \
+                                             HVAC_MODE_OFF
+from homeassistant.const import ATTR_TEMPERATURE, TEMP_CELSIUS
 from homeassistant.core import callback
 from homeassistant.helpers.dispatcher import async_dispatcher_connect
 
@@ -26,7 +26,7 @@ async def async_setup_platform(hass, config_entry, async_add_entities, discovery
     async_dispatcher_connect(hass, f'{DOMAIN}_new_climate', async_add_climate)
 
 
-class EmsBusClimate(EmsBusEntity, ClimateDevice):
+class EmsBusClimate(EmsBusEntity, ClimateEntity):
     '''EMS bus climate devices'''
 
     @property
@@ -49,7 +49,7 @@ class EmsBusClimate(EmsBusEntity, ClimateDevice):
 
     @property
     def supported_features(self):
-        return(SUPPORT_TARGET_TEMPERATURE)
+        return(ClimateEntityFeature.TARGET_TEMPERATURE)
 
     @property
     def precision(self):
@@ -75,8 +75,8 @@ class EmsBusClimate(EmsBusEntity, ClimateDevice):
     # Can't instantiate abstract class EmsBusClimate with abstract methods hvac_mode, hvac_modes
     @property
     def hvac_mode(self):
-        return(HVAC_MODE_OFF)
+        return(HVACMode.OFF)
 
     @property
     def hvac_modes(self):
-        return[(HVAC_MODE_OFF)]
+        return[(HVACMode.OFF)]
