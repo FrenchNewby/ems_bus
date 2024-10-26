@@ -53,7 +53,11 @@ class EmsBusInputNumber(EmsBusEntity, InputNumber):
     def state(self):
         """Return the state of the component."""
         return self._field.value
-
+    
+    def editable(self): """Ajout JRB"""
+        """Return if the input number is editable."""
+        return self._editable """ Fin ajout JRB"""
+        
     async def async_set_value(self, value):
         """Set new value."""
         super().async_set_value(value)
