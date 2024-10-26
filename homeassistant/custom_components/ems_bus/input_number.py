@@ -48,15 +48,17 @@ class EmsBusInputNumber(EmsBusEntity, InputNumber):
         }
         _LOGGER.debug('config=%s', config)
         InputNumber.__init__(self, config)
-
+        
+        """ défini l'attribut editable en tant que variable de classe"""
+        self._editable=False
+        
     @property
     def state(self):
         """Return the state of the component."""
         return self._field.value
     
-    def editable(self): """Ajout JRB"""
-        """Return if the input number is editable."""
-        return self._editable """ Fin ajout JRB"""
+    def editable(self): 
+        return self._editable 
         
     async def async_set_value(self, value):
         """Set new value."""
