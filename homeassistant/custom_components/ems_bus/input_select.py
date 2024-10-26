@@ -31,11 +31,11 @@ class EmsBusInputSelect(EmsBusEntity, InputSelect):
         try:
             options = self._field.unit.VALUES
         except AttributeError:
-            options = ()
-
+            #options = () 
+            self._options = []
         config = {
-            CONF_INITIAL: options[self._field.value],
-            CONF_OPTIONS: options,
+            CONF_INITIAL: self._options[self._field.value],
+            CONF_OPTIONS: self._options,
             CONF_ID: entity_id
         }
         InputSelect.__init__(self, config)
@@ -55,3 +55,4 @@ class EmsBusInputSelect(EmsBusEntity, InputSelect):
     def state(self):
         """Return the state of the component."""
         return self._options[self._field.value]
+
