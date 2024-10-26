@@ -75,8 +75,8 @@ class EmsBusClimate(EmsBusEntity, ClimateEntity):
     # Can't instantiate abstract class EmsBusClimate with abstract methods hvac_mode, hvac_modes
     @property
     def hvac_mode(self):
-        return(HVAC_Mode.OFF)
+        return(HVAC_MODE.OFF)
 
     @property
     def hvac_modes(self):
-        return[(HVAC_Mode.OFF)]
+        return[(HVAC_MODE.OFF)]
